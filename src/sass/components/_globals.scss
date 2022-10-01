@@ -1,0 +1,65 @@
+
+// - FONTS 
+// poppins deja de ser la fuente principal y pasa a ser quicksand, utilizado principalmente en títulos 
+$font-primary: 'Quicksand', sans-serif;
+$font-secondary: 'Poppins', sans-serif;
+
+// - TAMAÑO BASE PIXELES FUENTE"
+$browser-context: 16; // Medidas en pixeles que se utilizarán para la transformación de pixeles a rem o em
+
+
+// - COLORS
+$color-green: #68C453; 
+$color-green-light: #E2FBDB; // usado como bg
+$color-orange:#FFAB37;
+$color-orange-dark:#F89838;
+$color-orange-accent:#FF8710;
+$color-purple:#D28CE6;
+$color-pink: #FD82AC;
+$color-blue: #8CD2FF;
+$color-yellow: #FFBC00;
+$color-gray: #F4F4F4;
+$color-dark: #606060;
+// principal colors
+$color-primary: $color-dark;
+$color-secondary:$color-green;
+$color-tertiary:$color-orange;
+
+
+// MIXINS
+
+
+// Obtiene las bases de la fuente para tamaño, grosor, espacio entre letras, y altos de lineas. Los tamaños son bases y se pueden modificar según se necesite
+// size recibe en px, no importa que tenga escrito "px" o no esté presente
+@mixin font-primary($size:16, $font-weight:normal, $letter-spacing:normal, $line-height:1.25) {
+	font-family: $font-primary;
+  @include font-general($size, $font-weight, $letter-spacing, $line-height)
+}
+
+@mixin font-secondary($size:16, $font-weight:normal, $letter-spacing:normal, $line-height:1.5) {
+  font-family: $font-secondary;
+  @include font-general($size, $font-weight, $letter-spacing, $line-height)
+}
+
+// se puede reutilizar sin importar la fuente que tenga. Se deja de usar rem porque resultó no ser reponsivo en la manera que se lo utilizó. 
+@mixin font-general($size, $font-weight, $letter-spacing, $line-height) { 
+	font-size:  em($size);
+  font-weight: $font-weight;
+  letter-spacing: $letter-spacing;
+	line-height:  $line-height * 1em;	
+}
+
+
+//FUNCTIONS
+
+@function em($pixels, $context: $browser-context) { // transforma de pixeles a em
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}

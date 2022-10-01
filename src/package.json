@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  },
+  "scripts": {
+    "tw:build": "tailwindcss -i ./css/tailwind.css -o ./../assets/css/tailwind.css -w",
+    "tw:minify": "tailwindcss -i ./css/tailwind.css -o ./../assets/css/tailwind.css --minify",
+    "tw:test-pug": "tailwindcss -i ./css/tailwind.css -o ./css/test-pug.css -w"
+  },
+  "dependencies": {
+    "tw-elements": "^1.0.0-alpha12"
+  }
+}
